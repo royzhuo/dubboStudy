@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--包扫描-->
+    <context:component-scan base-package="com.dubbo.customer.serviceImpl"/>
+    <!--1.dubbo提供者应用名称(同样的服务名字相同，不与其他的服务重名)-->
+    <dubbo:application name="dubboProvide"/>
+    <!--2.配置zookeeper配置中心-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+    <!--<dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"></dubbo:registry>-->
+    <!--3.配置通信规则（通信协议，和端口号）-->
+    <dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
+    <!--4.声明需要调用的远程服务接口-->
+    <dubbo:reference interface="service.AddressService" id="addressService"></dubbo:reference>
+</beans>
