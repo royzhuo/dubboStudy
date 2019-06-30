@@ -14,7 +14,7 @@ public class TestCustomer {
         OrderService orderService= (OrderService) ioc.getBean(OrderService.class);
         List<UserAddress> userAddresses=orderService.getUserAddress();
         for (UserAddress userAddress:userAddresses){
-            System.out.println(userAddress.toString());
+            System.out.println(userAddress);
         }
         System.in.read();
     }
