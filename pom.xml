@@ -11,6 +11,7 @@
     <modules>
         <module>dubboProvide</module>
         <module>dubboCustomer</module>
+        <module>bootprovide</module>
         <module>dubbocommonService</module>
     </modules>
 

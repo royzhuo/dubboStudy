@@ -1,4 +1,4 @@
-package com.dubbo.provide.serviceImpl;
+package com.dubbo.serviceImpl;
 
 
 import com.alibaba.dubbo.config.annotation.Service;
@@ -9,9 +9,13 @@ import service.AddressService;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
+@Service  //暴露服务
 @Component
 public class AddressServiceImpl implements AddressService {
+
+    public AddressServiceImpl() {
+        System.out.println("------------------");
+    }
 
     @Override
     public List<UserAddress> getUserAddress(String userId) {
