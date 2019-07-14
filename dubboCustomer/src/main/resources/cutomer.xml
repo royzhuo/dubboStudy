@@ -23,7 +23,9 @@
     不适用范围：非幂等操作（增加）
     -->
     <!--version:多版本选择 value如果是*则随机选择-->
-    <dubbo:reference interface="service.AddressService" id="addressService" timeout="3000" retries="3" version="2.0.0">
+    <!--stub:本地存根 可以在发送接口请求时进行本地校验等动作-->
+    <dubbo:reference interface="service.AddressService" id="addressService" timeout="3000" retries="3" version="2.0.0"
+                     stub="com.dubbo.customer.sub.AddressServiceSub">
         <!--<dubbo:method name="getUserAddress" timeout="4000"></dubbo:method>-->
     </dubbo:reference>
 
