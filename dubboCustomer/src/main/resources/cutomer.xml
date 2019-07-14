@@ -22,7 +22,8 @@
     适用范围：幂等操作（查询，修改，删除）不管执行多少次都不影响结果，始终都是一条一个结果
     不适用范围：非幂等操作（增加）
     -->
-    <dubbo:reference interface="service.AddressService" id="addressService" timeout="3000" retries="3">
+    <!--version:多版本选择 value如果是*则随机选择-->
+    <dubbo:reference interface="service.AddressService" id="addressService" timeout="3000" retries="3" version="2.0.0">
         <!--<dubbo:method name="getUserAddress" timeout="4000"></dubbo:method>-->
     </dubbo:reference>
 

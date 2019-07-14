@@ -11,11 +11,11 @@ import java.util.List;
 
 @Service
 @Component
-public class AddressServiceImpl implements AddressService {
+public class AddressServiceImpl02 implements AddressService {
 
     @Override
     public List<UserAddress> getUserAddress(String userId) {
-        System.out.println("AddressServiceImpl.......old......");
+        System.out.println("AddressServiceImpl.......new......");
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {

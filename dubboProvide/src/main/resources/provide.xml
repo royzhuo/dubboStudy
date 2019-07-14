@@ -12,7 +12,12 @@
     <!--4.接口服务实现类-->
     <bean name="addressService" class="com.dubbo.provide.serviceImpl.AddressServiceImpl"></bean>
     <!--5.服务接口暴露给注册中心 rel:指向接口服务实现类-->
-    <dubbo:service interface="service.AddressService" ref="addressService" timeout="1000"/>
+    <!--version:版本控制-->
+    <dubbo:service interface="service.AddressService" ref="addressService" timeout="1000" version="1.0.0"/>
+
+    <bean name="addressServiceImpl02" class="com.dubbo.provide.serviceImpl.AddressServiceImpl02"></bean>
+    <dubbo:service interface="service.AddressService" ref="addressServiceImpl02" timeout="1000" version="2.0.0"/>
+
 
     <!--提供方的全局配置-->
     <dubbo:provider timeout="2000"></dubbo:provider>
