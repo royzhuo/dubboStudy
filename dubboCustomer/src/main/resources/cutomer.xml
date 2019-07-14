@@ -14,8 +14,14 @@
     <!--3.配置通信规则（通信协议，和端口号）-->
     <dubbo:protocol name="dubbo" port="20080"></dubbo:protocol>
     <!--4.声明需要调用的远程服务接口-->
-    <dubbo:reference interface="service.AddressService" id="addressService"></dubbo:reference>
+    <!--timeout
+    1.毫秒级 执行顺序：方法级有设置执行方法级别，如果没有在去接口级别查找，如果没有再去统一配置级别里查找
+    2.也可以在服务提供方里设置超时，级别相同的情况下，执行消费者提供方
+    -->
+    <dubbo:reference interface="service.AddressService" id="addressService" timeout="5000">
+        <dubbo:method name="getUserAddress" timeout="4000"></dubbo:method>
+    </dubbo:reference>
 
     <!--dubbo注册中心统一配置 check为false时，消费者启动时不去检查是否有服务提供者或dubbo reference check设置为false-->
-    <dubbo:consumer check="false"></dubbo:consumer>
+    <dubbo:consumer check="false" timeout="5000"></dubbo:consumer>
 </beans>
