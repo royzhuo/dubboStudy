@@ -18,8 +18,12 @@
     1.毫秒级 执行顺序：方法级有设置执行方法级别，如果没有在去接口级别查找，如果没有再去统一配置级别里查找
     2.也可以在服务提供方里设置超时，级别相同的情况下，执行消费者提供方
     -->
-    <dubbo:reference interface="service.AddressService" id="addressService" timeout="5000">
-        <dubbo:method name="getUserAddress" timeout="4000"></dubbo:method>
+    <!--retries:重试次数 不包含第一次请求的次数
+    适用范围：幂等操作（查询，修改，删除）不管执行多少次都不影响结果，始终都是一条一个结果
+    不适用范围：非幂等操作（增加）
+    -->
+    <dubbo:reference interface="service.AddressService" id="addressService" timeout="3000" retries="3">
+        <!--<dubbo:method name="getUserAddress" timeout="4000"></dubbo:method>-->
     </dubbo:reference>
 
     <!--dubbo注册中心统一配置 check为false时，消费者启动时不去检查是否有服务提供者或dubbo reference check设置为false-->

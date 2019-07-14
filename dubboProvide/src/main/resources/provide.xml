@@ -8,11 +8,11 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
     <!--<dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"></dubbo:registry>-->
     <!--3.配置通信规则（通信协议，和端口号）-->
-    <dubbo:protocol name="dubbo" port="20080"></dubbo:protocol>
+    <dubbo:protocol name="dubbo" port="20081"></dubbo:protocol>
     <!--4.接口服务实现类-->
     <bean name="addressService" class="com.dubbo.provide.serviceImpl.AddressServiceImpl"></bean>
     <!--5.服务接口暴露给注册中心 rel:指向接口服务实现类-->
-    <dubbo:service interface="service.AddressService" ref="addressService"/>
+    <dubbo:service interface="service.AddressService" ref="addressService" timeout="1000"/>
 
     <!--提供方的全局配置-->
     <dubbo:provider timeout="2000"></dubbo:provider>
